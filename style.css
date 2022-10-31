@@ -1,0 +1,211 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Courgette', sans-serif;
+}
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap: wrap;
+    background-color:#161623;
+    min-height:100vh;
+}
+header{
+    text-align:center;
+    font-size: 60px;
+    color:#fff;
+}
+.topic{
+    font-size: 30px;
+}
+section::before{
+    content: "";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(#f00,#f0f);
+    clip-path: circle(30% at right 70%  );
+}
+section::after{
+    content: "";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(#2196f3,#e91e63);
+    clip-path: circle(20% at 10% 10%);
+}
+.container{
+    position:relative;
+    z-index: 1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:40px 0;
+}
+.container .card{
+    position: relative;
+    width:300px;
+    height:400px;
+    background: rgba(255,255,255,0.05);
+    margin: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;    
+    backdrop-filter: blur(10px);    
+}
+.container .card .content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.container .card:hover .content {
+    opacity: 1;
+    transform: translateY(-20px);
+}
+.container .card .content .imgBox{
+    position: relative;
+    width: 150px;
+    height:150px;
+    border-radius: 50%; 
+    overflow: hidden;
+    border:10px solid rgba(0,0,0,0.25);    
+}
+.container .card .content .imgBox img{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+.container .card .content .contentBox h3{
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-align: center; 
+    margin:20px 0 10px;
+    line-height: 1.1em;
+}
+.container .card .content .contentBox h3 span{
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: initial;
+}
+
+.container .card .contact{
+    position: absolute;
+    bottom: 50px;
+    display:flex;
+}
+.container .card .contact li{
+    list-style: none;
+    margin:0 10px;
+    transform: translateY(40px);
+    transition:0.5s;
+    transition-delay: calc(0.1s*var(--i));
+    opacity: 0;
+}
+.container .card:hover .contact li{
+    transform: translateY(0px);
+    opacity: 1  ;
+}
+.container .card .contact li a{
+    color: #fff;
+    font-size: 24px;
+}
+
+.overlay-text {
+    display:none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content:center;
+    align-items:center;
+    z-index: 100;
+    color: #161623;
+    font-family: 'Poppins',sans-serif;
+}
+.overlay-text.visible{
+    display:flex;
+    animation:overlay-grow 0.5s forwards;
+}
+.overlay-text img{
+    height:40%;
+    margin: 0px 5rem 0 2rem;
+    border-radius:50px;
+}
+.overlay-text .introduction{
+    font-size: 24px;
+    font-weight:500;
+    color:#fff;
+    line-height: 2em;
+}
+.overlay-text img{
+    animation: movementLeftToRight 1.5s forwards;
+}
+.overlay-text .introduction.name{
+    margin-bottom: 10rem;
+    animation: movementTopToDown 1.5s forwards;
+}
+
+.overlay-text .introduction.major{
+    animation: movementRightToLeft 1.5s forwards;
+}
+.overlay-text .introduction.slogan{
+    margin-top: 10rem;
+    animation: movementDownToTop 1.5s forwards;
+}
+
+@keyframes movementLeftToRight {
+    from{
+        transform: translateX(-15rem);
+    }to{    
+        transform: translateX(0px);
+    }
+}
+@keyframes movementRightToLeft {
+    from{
+        transform: translateX(15rem);
+    }to{    
+        transform: translateX(0px);
+    }
+}
+@keyframes movementTopToDown {
+    from{
+        transform: translateY(-15rem);
+    }to{    
+        transform: translateX(0px);
+    }
+}
+@keyframes movementDownToTop {
+    from{
+        transform: translateY(15rem);
+    }to{    
+        transform: translateX(0px);
+    }
+}
+@keyframes overlay-grow {
+    from{
+        background-color: rgba(0,0,0,0);
+        font-size:0px;
+    }to{
+        background-color: rgba(0,0,0,0.8);
+        font-size:100px;
+    }
+}
